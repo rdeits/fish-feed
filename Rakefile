@@ -12,7 +12,7 @@ webm_files = FileList['build/audio/**/*.webm']
 mp3_files = webm_files.ext(".mp3")
 
 rule ".mp3" => ".webm" do |t|
-    sh "ffmpeg -i \"#{t.source}\" -acodec libmp3lame -aq 4 \"#{t.source.gsub(/\.webm/, '.mp3')}\""
+    sh "avconv -i \"#{t.source}\" -acodec libmp3lame -aq 4 \"#{t.source.gsub(/\.webm/, '.mp3')}\""
 end
 
 multitask "build/rss.xml" => mp3_files do
