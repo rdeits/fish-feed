@@ -3,10 +3,14 @@ import PyRSS2Gen as rss2gen
 import os
 import json
 import glob
+import sys
 
-url_base = "http://192.168.0.100:8000/"
 
 def main():
+    if len(sys.argv) > 1:
+        url_base = sys.argv[1] + "/"
+    else:
+        url_base = 'localhost:8000/'
     items = []
 
     for folder in sorted(os.listdir(os.path.join('build', 'audio')), reverse=True):

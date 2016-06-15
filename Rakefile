@@ -16,7 +16,7 @@ rule ".mp3" => ".webm" do |t|
 end
 
 multitask "build/rss.xml" => mp3_files do
-    sh "python3 generate_feed.py"
+    sh "python3 generate_feed.py #{ENV['URL_BASE']}"
 end
 
 
