@@ -25,7 +25,7 @@ end
 
 task :serve => :default do
     Dir.chdir("build") do
-        sh "python3 -m http.server"
+        sh "python3 -m http.server 9090"
     end
 end
 
